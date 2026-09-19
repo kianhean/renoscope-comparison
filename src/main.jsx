@@ -115,17 +115,20 @@ const quoteData = [
 ];
 
 const comparisonRows = [
-  { group: 'Price & coverage', label: 'Adjusted final', key: 'final', type: 'money' },
+  { group: 'Price & coverage', label: 'Adjusted final', key: 'final', type: 'money', best: ['cx'] },
   { group: 'Price & coverage', label: 'Quoted base', key: 'quoted', type: 'money' },
   { group: 'Price & coverage', label: 'Normalized gap fill', values: { cx: '+$38,690', polibuild: '+$21,750', essenwoods: '+$21,640' } },
-  { group: 'Scope', label: 'Study room', values: { cx: 'No', polibuild: 'Partial', essenwoods: 'Full glass wall' }, diff: true },
-  { group: 'Scope', label: 'Aircon', key: 'details.aircon', diff: true },
-  { group: 'Scope', label: 'Scaffolding', values: { cx: 'No', polibuild: 'Included · $6,000', essenwoods: 'Discussed separately' }, diff: true },
-  { group: 'Scope', label: 'Electrical', key: 'details.electrical', diff: true },
+  { group: 'Scope', label: 'Study room', values: { cx: 'Not included', polibuild: 'Shelves + flooring only', essenwoods: 'Full glass wall + door' }, statuses: { cx: 'excluded', polibuild: 'partial', essenwoods: 'included' }, best: ['essenwoods'], diff: true },
+  { group: 'Scope', label: 'Aircon', key: 'details.aircon', statuses: { cx: 'excluded', polibuild: 'included', essenwoods: 'excluded' }, best: ['polibuild'], diff: true },
+  { group: 'Scope', label: 'Scaffolding', values: { cx: 'Not included', polibuild: 'Included · $6,000', essenwoods: 'Discuss separately' }, statuses: { cx: 'excluded', polibuild: 'included', essenwoods: 'unknown' }, best: ['polibuild'], diff: true },
+  { group: 'Scope', label: 'Balcony works', values: { cx: 'Not included', polibuild: 'Hack + tiles included', essenwoods: 'Hack + tiles included' }, statuses: { cx: 'excluded', polibuild: 'included', essenwoods: 'included' }, best: ['polibuild', 'essenwoods'], diff: true },
+  { group: 'Scope', label: 'PE endorsement', values: { cx: 'Not included', polibuild: 'Not included', essenwoods: 'Included · $3,000' }, statuses: { cx: 'excluded', polibuild: 'excluded', essenwoods: 'included' }, best: ['essenwoods'], diff: true },
+  { group: 'Scope', label: 'Hidden storage', values: { cx: 'Not included', polibuild: 'Not included', essenwoods: 'Included · $4,250' }, statuses: { cx: 'excluded', polibuild: 'excluded', essenwoods: 'included' }, best: ['essenwoods'], diff: true },
+  { group: 'Scope', label: 'Electrical', key: 'details.electrical', statuses: { cx: 'partial', polibuild: 'unknown', essenwoods: 'unknown' }, best: ['cx'], diff: true },
   { group: 'Finishes', label: 'Flooring approach', key: 'details.flooring', diff: true },
   { group: 'Finishes', label: 'Carpentry total', key: 'details.carpentry' },
-  { group: 'Terms', label: 'Warranty', key: 'details.warranty', diff: true },
-  { group: 'Terms', label: 'Payment schedule', key: 'details.payment', diff: true },
+  { group: 'Terms', label: 'Warranty', key: 'details.warranty', statuses: { cx: 'included', polibuild: 'included', essenwoods: 'unknown' }, best: ['cx', 'polibuild'], diff: true },
+  { group: 'Terms', label: 'Payment schedule', key: 'details.payment', statuses: { cx: 'included', polibuild: 'included', essenwoods: 'unknown' }, best: ['cx', 'polibuild'], diff: true },
 ];
 
 const tabs = ['All', 'Value', 'Turnkey', 'Premium'];
@@ -136,12 +139,47 @@ const askQuestions = [
   'Confirm if provisional / estimated items are fixed or site-measured',
 ];
 
+const priorityOptions = [
+  {
+    id: 'balanced',
+    label: 'Balanced value',
+    quoteId: 'polibuild',
+    title: 'Polibuild is the clearest middle ground',
+    summary: 'Pay $7,478 more than CX Reno for included aircon, scaffolding and balcony works, while staying $41,512 below Essenwoods.',
+    caveat: 'Resolve electrical pricing and PE endorsement before signing.',
+  },
+  {
+    id: 'budget',
+    label: 'Lowest cost',
+    quoteId: 'cx',
+    title: 'CX Reno keeps the final total lowest',
+    summary: 'Save $7,478 against Polibuild after normalization, but expect to coordinate more third-party work yourself.',
+    caveat: 'Confirm the electrical cap and price every excluded scope before signing.',
+  },
+  {
+    id: 'complete',
+    label: 'Most complete',
+    quoteId: 'essenwoods',
+    title: 'Essenwoods covers the broadest design brief',
+    summary: 'Gain the full study enclosure, hidden storage and PE endorsement, at a $41,512 premium over Polibuild.',
+    caveat: 'Aircon is still excluded, electrical is unpriced, and contract terms are not stated.',
+  },
+];
+
 const money = (value) => `$${value.toLocaleString('en-SG')}`;
 
 function valueFor(row, quote) {
   if (row.values) return row.values[quote.id];
   if (row.key === 'final' || row.key === 'quoted') return money(quote[row.key]);
   return row.key.split('.').reduce((value, key) => value?.[key], quote);
+}
+
+function StatusMark({ status }) {
+  if (status === 'included') return <Check size={14} aria-hidden="true" />;
+  if (status === 'partial') return <Minus size={14} aria-hidden="true" />;
+  if (status === 'excluded') return <X size={14} aria-hidden="true" />;
+  if (status === 'unknown') return <CircleHelp size={14} aria-hidden="true" />;
+  return null;
 }
 
 function App() {
@@ -153,15 +191,19 @@ function App() {
   const [votes, setVotes] = useState(Object.fromEntries(quoteData.map((quote) => [quote.id, quote.votes])));
   const [ratings, setRatings] = useState(Object.fromEntries(quoteData.map((quote) => [quote.id, quote.rating])));
   const [checkedQuestions, setCheckedQuestions] = useState([]);
+  const [priority, setPriority] = useState('balanced');
 
   const visibleQuotes = useMemo(() => quoteData.filter((quote) => {
     const matchesTab = activeTab === 'All' || quote.category === activeTab;
     const query = search.toLowerCase();
-    const matchesSearch = !query || [quote.name, quote.category, quote.verdict, quote.summary].join(' ').toLowerCase().includes(query);
+    const comparisonText = comparisonRows.map((row) => `${row.label} ${valueFor(row, quote)}`).join(' ');
+    const matchesSearch = !query || [quote.name, quote.category, quote.verdict, quote.summary, ...quote.strengths, ...quote.risks, comparisonText].join(' ').toLowerCase().includes(query);
     return matchesTab && matchesSearch;
   }), [activeTab, search]);
 
   const comparedQuotes = quoteData.filter((quote) => selected.includes(quote.id));
+  const activePriority = priorityOptions.find((option) => option.id === priority);
+  const recommendedQuote = quoteData.find((quote) => quote.id === activePriority.quoteId);
   const comparisonGroups = comparisonRows.reduce((groups, row) => {
     const last = groups[groups.length - 1];
     if (!last || last.group !== row.group) groups.push({ group: row.group, rows: [row] });
@@ -171,7 +213,7 @@ function App() {
 
   const toggleQuote = (id) => {
     setSelected((current) => current.includes(id)
-      ? current.filter((item) => item !== id)
+      ? current.length === 1 ? current : current.filter((item) => item !== id)
       : current.length < 4 ? [...current, id] : current);
   };
 
@@ -228,20 +270,41 @@ function App() {
             <div><div className="section-kicker">01 / SIDE BY SIDE</div><h2>Compare the real<br /><em>finish line.</em></h2></div>
             <p>Headline prices are not like-for-like. Every adjusted total below fills the missing scope so you can compare the same renovation brief.</p>
           </div>
+          <div className="decision-lens" aria-labelledby="decision-lens-title">
+            <div className="lens-controls">
+              <span className="section-kicker">START WITH YOUR PRIORITY</span>
+              <h3 id="decision-lens-title">What matters most to you?</h3>
+              <div className="priority-options">
+                {priorityOptions.map((option) => <button key={option.id} type="button" className={priority === option.id ? 'active' : ''} onClick={() => setPriority(option.id)} aria-pressed={priority === option.id}>
+                  {option.id === 'balanced' && <ClipboardCheck size={17} />}
+                  {option.id === 'budget' && <Leaf size={17} />}
+                  {option.id === 'complete' && <Flame size={17} />}
+                  <span>{option.label}</span>
+                </button>)}
+              </div>
+            </div>
+            <div className="lens-result" style={{ '--result-color': recommendedQuote.color, '--result-bg': recommendedQuote.bg }}>
+              <div className="lens-result-head"><span className="vendor-avatar">{recommendedQuote.short}</span><span>BEST FIT FOR THIS PRIORITY</span></div>
+              <h3>{activePriority.title}</h3>
+              <p>{activePriority.summary}</p>
+              <div className="lens-caveat"><TriangleAlert size={16} /><span>{activePriority.caveat}</span></div>
+            </div>
+          </div>
           <div className="filter-bar">
-            <label className="search-box"><Search size={17} /><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Search quotes, scope, risks..." /><kbd>⌘ K</kbd></label>
+            <label className="search-box"><Search size={17} /><input value={search} onChange={(event) => setSearch(event.target.value)} placeholder="Find a contractor or criterion..." /><kbd>⌘ K</kbd></label>
             <div className="filter-pills" role="tablist" aria-label="Quote categories">
               {tabs.map((tab) => <button key={tab} type="button" className={activeTab === tab ? 'active' : ''} onClick={() => setActiveTab(tab)}>{tab}{tab !== 'All' && <span>{quoteData.filter((quote) => quote.category === tab).length}</span>}</button>)}
             </div>
             <button className={`difference-toggle ${differencesOnly ? 'on' : ''}`} type="button" onClick={() => setDifferencesOnly(!differencesOnly)} aria-pressed={differencesOnly}><span className="toggle-track"><span /></span> Differences only</button>
           </div>
 
-          <div className="selection-row"><span><Filter size={14} /> Comparing <b>{selected.length} of 4</b> quotes</span><div className="selected-chips">{comparedQuotes.map((quote) => <button key={quote.id} type="button" style={{ '--chip-color': quote.color }} onClick={() => toggleQuote(quote.id)}>{quote.short}<X size={12} /></button>)}{selected.length < 4 && <span className="selection-hint">Select up to 4</span>}</div></div>
+          <div className="selection-row"><span><Filter size={14} /> Comparing <b>{selected.length} of {quoteData.length}</b> quotes</span><div className="selected-chips">{comparedQuotes.map((quote) => <button key={quote.id} type="button" style={{ '--chip-color': quote.color }} onClick={() => toggleQuote(quote.id)}>{quote.short}<X size={12} /></button>)}<span className="selection-hint">{selected.length === quoteData.length ? 'All quotes selected' : 'Select another quote above'}</span></div></div>
 
           <div className="quote-cards" aria-label="Quote selection">
-            {visibleQuotes.map((quote) => <article className={`quote-card ${selected.includes(quote.id) ? 'selected' : ''}`} key={quote.id}>
+            {visibleQuotes.map((quote) => <article className={`quote-card ${selected.includes(quote.id) ? 'selected' : ''} ${recommendedQuote.id === quote.id ? 'recommended' : ''}`} key={quote.id}>
+              {recommendedQuote.id === quote.id && <div className="recommended-flag"><BadgeCheck size={13} /> Best fit: {activePriority.label.toLowerCase()}</div>}
               <div className="quote-card-head"><div className="vendor-avatar" style={{ background: quote.bg, color: quote.color }}>{quote.short}</div><div><h3>{quote.name}</h3><span>{quote.ref}</span></div><button className="check-button" type="button" onClick={() => toggleQuote(quote.id)} aria-label={`${selected.includes(quote.id) ? 'Remove' : 'Add'} ${quote.name}`}>{selected.includes(quote.id) ? <Check size={15} /> : <Plus size={16} />}</button></div>
-              <div className="quote-number"><span>Quoted base</span><strong>{money(quote.quoted)}</strong></div>
+              <div className="quote-number"><span>Comparable final<small>Quoted base {money(quote.quoted)}</small></span><strong>{money(quote.final)}</strong></div>
               <div className="quote-rating"><span className="stars">{[1, 2, 3, 4, 5].map((star) => <button key={star} type="button" aria-label={`Rate ${quote.name} ${star} stars`} onClick={() => setRatings((current) => ({ ...current, [quote.id]: star }))}><Star size={13} fill={star <= ratings[quote.id] ? 'currentColor' : 'none'} /></button>)}</span><b>{ratings[quote.id].toFixed(1)}</b><span className="rating-count">({votes[quote.id]})</span></div>
               <div className="quote-tag" style={{ color: quote.color, background: quote.bg }}>{quote.category} <span>·</span> {quote.delta}</div>
               <p>{quote.summary}</p>
@@ -259,10 +322,19 @@ function App() {
           </div>
 
           <div className="compare-table-wrap">
-            <div className="table-heading"><div><span className="section-kicker">LIVE COMPARISON</span><h3>Scope, terms & inclusions</h3></div><span className="table-note"><span className="warning-dot" /> amber cells need a follow-up</span></div>
-            <div className="compare-table" role="table">
-              <div className="table-row table-header" role="row"><div role="columnheader">Criteria</div>{comparedQuotes.map((quote) => <div role="columnheader" key={quote.id}><span className="table-avatar" style={{ background: quote.bg, color: quote.color }}>{quote.short}</span><span>{quote.name}</span><small>{quote.date}</small></div>)}</div>
-              {comparisonGroups.map((group) => <div key={group.group} className="table-group"><div className="group-label">{group.group}</div>{group.rows.filter((row) => !differencesOnly || row.diff).map((row) => <div className="table-row" role="row" key={row.label}><div role="cell">{row.label}{row.diff && <span className="row-alert">!</span>}</div>{comparedQuotes.map((quote) => <div role="cell" key={quote.id} className={row.diff ? 'needs-check' : ''}>{row.label === 'Adjusted final' && <strong className="table-price">{valueFor(row, quote)}</strong>}{row.label !== 'Adjusted final' && valueFor(row, quote)}</div>)}</div>)}</div>)}
+            <div className="table-heading"><div><span className="section-kicker">LIVE COMPARISON</span><h3>Scope, terms & inclusions</h3></div><span className="table-note"><BadgeCheck size={13} /> “Best” marks the strongest offer for that row</span></div>
+            <div className="status-legend" aria-label="Comparison status legend"><span><i className="status-included"><Check size={12} /></i> Included / clear</span><span><i className="status-partial"><Minus size={12} /></i> Partial</span><span><i className="status-excluded"><X size={12} /></i> Excluded</span><span><i className="status-unknown"><CircleHelp size={12} /></i> Needs confirmation</span></div>
+            <div className="compare-table" role="table" style={{ '--quote-count': comparedQuotes.length }}>
+              <div className="table-row table-header" role="row"><div role="columnheader">Criteria</div>{comparedQuotes.map((quote) => <div role="columnheader" key={quote.id} className={recommendedQuote.id === quote.id ? 'recommended-column' : ''}><span className="table-avatar" style={{ background: quote.bg, color: quote.color }}>{quote.short}</span><span>{quote.name}</span>{recommendedQuote.id === quote.id && <b className="header-pick">Your pick</b>}<small>{quote.date}</small></div>)}</div>
+              {comparisonGroups.map((group) => {
+                const rows = group.rows.filter((row) => (!differencesOnly || row.diff) && (!search || [row.label, ...comparedQuotes.map((quote) => valueFor(row, quote))].join(' ').toLowerCase().includes(search.toLowerCase())));
+                if (!rows.length) return null;
+                return <div key={group.group} className="table-group"><div className="group-label">{group.group}</div>{rows.map((row) => <div className="table-row" role="row" key={row.label}><div role="cell">{row.label}</div>{comparedQuotes.map((quote) => {
+                  const status = row.statuses?.[quote.id];
+                  const isBest = row.best?.includes(quote.id);
+                  return <div role="cell" key={quote.id} className={`comparison-cell ${status ? `cell-${status}` : ''} ${isBest ? 'best-cell' : ''}`}><span className="cell-value">{status && <i className={`status-${status}`}><StatusMark status={status} /></i>}<span>{row.label === 'Adjusted final' ? <strong className="table-price">{valueFor(row, quote)}</strong> : valueFor(row, quote)}</span></span>{isBest && <b className="best-label">Best</b>}</div>;
+                })}</div>)}</div>;
+              })}
               {differencesOnly && <div className="diff-note"><Info size={15} /> Showing {comparisonRows.filter((row) => row.diff).length} flagged criteria only. Turn off the toggle to see all rows.</div>}
             </div>
           </div>
