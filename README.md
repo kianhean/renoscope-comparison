@@ -1,6 +1,6 @@
 # RenoScope
 
-RenoScope is a responsive renovation quote comparison dashboard for the 51 Bedok Ria Crescent project.
+RenoScope is a responsive renovation quote comparison dashboard for a residential renovation project.
 
 The app compares normalized totals, scope coverage, inclusions, risks, and contractor terms across CX Reno, Polibuild, and Essenwoods.
 

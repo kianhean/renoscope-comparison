@@ -186,7 +186,7 @@ function App() {
           <span className="brand-mark"><Sparkles size={16} strokeWidth={2.5} /></span>
           <span>reno<span>scope</span></span>
         </a>
-        <div className="topbar-project"><span>PROJECT 01</span><b>51 Bedok Ria Crescent</b></div>
+        <div className="topbar-project"><span>PROJECT 01</span><b>Renovation quote review</b></div>
         <nav className="topnav" aria-label="Main navigation">
           <a href="#comparison">Compare</a>
           <a href="#scope">Scope audit</a>
@@ -282,7 +282,7 @@ function App() {
           <div className="decision-card"><div className="decision-copy"><div className="section-kicker">03 / DECISION NOTES</div><h2>The honest<br /><em>takeaway.</em></h2><p>Normalized, the ranking is <strong>CX Reno → Polibuild → Essenwoods.</strong> CX and Polibuild are close enough that certainty on electrical and PE could change the winner.</p><div className="recommendation"><span className="rec-icon"><Sparkles size={17} /></span><div><span>OUR READ</span><strong>Polibuild is the sensible shortlist.</strong><small>Ask for a fully priced electrical schedule before signing.</small></div></div></div><div className="questions"><div className="questions-head"><span>FOLLOW-UP CHECKLIST</span><b>{checkedQuestions.length}/{askQuestions.length} complete</b></div>{askQuestions.map((question, index) => <button className={`question ${checkedQuestions.includes(index) ? 'done' : ''}`} type="button" key={question} onClick={() => toggleQuestion(index)}><span className="question-check">{checkedQuestions.includes(index) && <Check size={13} />}</span><span>{question}</span><ArrowUpRight size={15} /></button>)}</div></div>
         </section>
       </main>
-      <footer className="footer section-wrap"><div className="brand"><span className="brand-mark"><Sparkles size={14} /></span><span>reno<span>scope</span></span></div><span>Prepared for 51 Bedok Ria Crescent · Source: 3 contractor quotes</span><a href="#top">Back to top <ArrowUpRight size={14} /></a></footer>
+      <footer className="footer section-wrap"><div className="brand"><span className="brand-mark"><Sparkles size={14} /></span><span>reno<span>scope</span></span></div><span>Prepared for a residential renovation · Source: 3 contractor quotes</span><a href="#top">Back to top <ArrowUpRight size={14} /></a></footer>
     </div>
   );
 }
