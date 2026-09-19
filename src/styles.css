@@ -67,3 +67,67 @@ h1 em, h2 em { font-family: Fraunces, serif; font-weight: 500; color: #7dc0b3; }
 @media (max-width: 900px) { .section-wrap { width: min(100% - 38px, 680px); }.topbar { padding: 0 19px; gap: 17px; }.topbar-project, .topnav { display: none; }.export-button { margin-left: auto; }.hero { grid-template-columns: 1fr; padding: 50px 37px; gap: 45px; }.hero-insight { justify-self: stretch; width: 100%; }.stats-strip { grid-template-columns: repeat(2, 1fr); }.stat:nth-child(2) { border-right: 0; }.stat:nth-child(-n+2) { border-bottom: 1px solid var(--line); }.workspace { padding-top: 80px; }.section-heading { grid-template-columns: 1fr; gap: 17px; }.filter-bar { flex-wrap: wrap; }.search-box { flex: 1; }.difference-toggle { margin-left: 0; }.quote-cards { grid-template-columns: 1fr; }.quote-card p { min-height: 0; }.normalized-panel { padding: 24px 20px; }.compare-table-wrap { overflow-x: auto; }.compare-table { min-width: 690px; }.scope-section, .decision-section { padding-top: 85px; }.decision-card { grid-template-columns: 1fr; }.accordion-content { padding-left: 30px; }.footer { flex-wrap: wrap; }.footer a { margin-left: 0; } }
 @media (max-width: 570px) { .section-wrap { width: calc(100% - 28px); }.topbar { height: 62px; }.export-button { font-size: 0; padding: 8px; }.export-button svg { width: 16px; height: 16px; }.hero { margin-top: 14px; padding: 37px 24px 27px; min-height: 0; }.hero:after { width: 300px; height: 300px; right: -145px; top: 30px; }.eyebrow { font-size: 8px; gap: 7px; }.eyebrow-line { width: 18px; }.hero h1 { font-size: 56px; margin: 23px 0 19px; }.hero-intro { font-size: 13px; }.hero-actions { flex-direction: column; align-items: flex-start; gap: 17px; margin-top: 29px; }.hero-insight { padding: 22px 18px; }.insight-legend { gap: 7px; flex-wrap: wrap; }.stats-strip { margin-top: 19px; }.stat { padding: 15px 12px; gap: 9px; }.stat-icon { width: 27px; height: 27px; }.stat b { font-size: 16px; }.stat span:not(.stat-icon) { font-size: 9px; }.section-heading h2 { font-size: 40px; }.filter-bar { padding: 7px; gap: 7px; }.search-box { min-width: 100%; border-bottom: 1px solid #e5eae5; padding: 7px 5px 10px; }.filter-pills { order: 2; overflow-x: auto; }.difference-toggle { order: 3; font-size: 10px; margin-left: auto; }.selection-row { align-items: flex-start; gap: 9px; flex-direction: column; }.selected-chips { align-self: flex-start; }.normalized-intro { display: block; }.normalized-note { margin-top: 16px; }.chart-row { grid-template-columns: 105px 1fr; gap: 8px; }.chart-name { font-size: 10px; }.chart-name small { display: none; }.chart-delta { display: none; }.chart-fill { min-width: 75px; }.chart-fill span { font-size: 9px; }.table-heading { align-items: flex-start; gap: 13px; flex-direction: column; }.accordion-trigger { min-height: 68px; grid-template-columns: 24px 1fr 24px; gap: 8px; }.accordion-verdict, .accordion-total { display: none; }.accordion-content { padding: 0 0 22px 32px; }.detail-summary { grid-template-columns: 115px 1fr; gap: 14px; }.detail-score strong { font-size: 23px; }.detail-grid { grid-template-columns: repeat(2, 1fr); }.detail-grid > div:nth-child(3n) { padding-left: 0; border-right: 1px solid var(--line); }.detail-grid > div:nth-child(3n-1) { padding-left: 0; }.detail-grid > div:nth-child(2n) { padding-left: 10px; border-right: 0; }.decision-copy { padding: 32px 25px; }.decision-copy h2 { font-size: 41px; }.questions { padding: 27px 23px; }.question { font-size: 10px; }.footer { gap: 13px; padding-bottom: 24px; }.footer > span { width: 100%; line-height: 1.5; } }
 @media print { .topbar { position: static; }.export-button, .topnav, .filter-bar, .selection-row, .vote-button, .footer a { display: none; }.hero { margin-top: 0; }.workspace, .scope-section, .decision-section { padding-top: 35px; } }
+
+/* Accessible type scale: keep the dense comparison UI readable without losing its compact layout. */
+.app-shell :focus-visible { outline: 3px solid #83c6b4; outline-offset: 3px; }
+.topbar-project span, .section-kicker, .eyebrow, .insight-top, .questions-head > span { font-size: 11px; }
+.topbar-project b { font-size: 13px; }
+.topnav { font-size: 14px; }
+.export-button { font-size: 13px; }
+.hero-intro { font-size: 16px; }
+.primary-button { font-size: 13px; }
+.updated-note { font-size: 12px; }
+.insight-choice span { font-size: 13px; }
+.insight-metric { font-size: 12px; }
+.insight-legend { font-size: 11px; }
+.stat span:not(.stat-icon) { font-size: 12px; }
+.section-heading p { font-size: 15px; }
+.search-box input { font-size: 14px; }
+.search-box kbd { font-size: 11px; }
+.filter-pills button { font-size: 13px; }
+.filter-pills button span { font-size: 11px; }
+.difference-toggle { font-size: 13px; }
+.selection-row { font-size: 13px; }
+.selected-chips button { font-size: 11px; }
+.selection-hint { font-size: 12px; }
+.quote-card-head span { font-size: 11px; }
+.quote-number span { font-size: 12px; }
+.quote-rating { font-size: 12px; }
+.rating-count { font-size: 11px; }
+.quote-tag { font-size: 11px; }
+.quote-card p { font-size: 13px; line-height: 1.7; }
+.vote-button { font-size: 12px; }
+.normalized-intro p { font-size: 13px; }
+.normalized-note { font-size: 12px; }
+.chart-name { font-size: 12px; }
+.chart-fill span { font-size: 12px; }
+.chart-delta { font-size: 11px; }
+.table-note { font-size: 11px; }
+.table-row > div { font-size: 13px; line-height: 1.5; }
+.table-header small { font-size: 10px; }
+.group-label { font-size: 11px; }
+.diff-note { font-size: 12px; }
+.accordion-index { font-size: 11px; }
+.accordion-verdict { font-size: 13px; }
+.detail-score span { font-size: 10px; }
+.detail-score strong small { font-size: 12px; }
+.detail-summary p { font-size: 14px; }
+.strength-tags span { font-size: 12px; }
+.detail-grid span { font-size: 10px; }
+.detail-grid b { font-size: 13px; }
+.risk-row { font-size: 12px; }
+.decision-copy p { font-size: 14px; }
+.recommendation span { font-size: 10px; }
+.recommendation strong { font-size: 14px; }
+.recommendation small { font-size: 12px; }
+.questions-head b { font-size: 11px; }
+.question { font-size: 13px; line-height: 1.5; }
+
+@media (max-width: 570px) {
+  .hero-intro { font-size: 15px; }
+  .eyebrow { font-size: 9px; }
+  .stat span:not(.stat-icon) { font-size: 11px; }
+  .difference-toggle { font-size: 12px; }
+  .chart-name { font-size: 11px; }
+  .chart-fill span { font-size: 10px; }
+}
