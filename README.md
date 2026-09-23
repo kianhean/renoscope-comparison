@@ -2,7 +2,7 @@
 
 RenoScope is a responsive renovation quote comparison dashboard for a residential renovation project.
 
-The app compares normalized totals, scope coverage, inclusions, risks, and contractor terms across CX Reno, Polibuild, and Essenwoods.
+The app compares quoted totals, illustrative scope-gap allowances, inclusions, risks, and contractor terms across CX Reno, Kang Sheng, Polibuild, and Essenwoods. The tile-material calculator starts at $6/sqft and lets you enter a different price and measured bathroom/balcony tile areas. “Export view” opens a two-page A4 print report using the current calculator inputs.
 
 ## Run locally
 
