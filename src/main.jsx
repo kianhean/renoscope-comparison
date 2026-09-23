@@ -33,11 +33,11 @@ const quoteData = [
     color: '#ef7c5d', bg: '#fff1ec', base: 85530, printed: 93227.70, gap: 38690, proxy: 124220,
     tax: '9% GST included in printed total',
     verdict: 'Lowest printed total; substantial gaps',
-    summary: 'The $93,227.70 total includes GST. Aircon, balcony, study enclosure and scaffold are absent; confirm whether its common-bathroom works cover the intended ensuite.',
+    summary: 'The $93,227.70 total includes GST. Aircon, balcony, study enclosure and scaffold are absent; CX labels some Main Ensuite work “Bathroom” and some “Main Ensuite,” so reconcile the full scope.',
     strengths: ['Electrical allowance $4,200', '1-year workmanship warranty', 'Whole-unit vinyl overlay'],
-    risks: ['Common bathroom vs main ensuite needs a plan', 'Aircon, PE and scaffolding not quoted', 'Study enclosure, shelves and balcony not quoted'],
+    risks: ['Main Ensuite work is split across differently labelled lines', 'Aircon, PE and scaffolding not quoted', 'Study enclosure, shelves and balcony not quoted'],
     details: {
-      'Bathroom': 'Common bathroom retiled; main-ensuite floor/cabinetry separately listed. Confirm exact room scope.',
+      'Main Ensuite': 'Quote labels some work “Bathroom” and other work “Main Ensuite”; reconcile the full one-room scope.',
       'Electrical': '$4,200: about 20 light/fan points, 20 double sockets, 20 light installs and heater switch; fixtures extra.',
       'Aircon': 'Not quoted',
       'Flooring': 'Overlay vinyl ~1,200 sqft; no full parquet restoration',
@@ -52,11 +52,11 @@ const quoteData = [
     color: '#7385ae', bg: '#eef1fa', base: 104370, printed: 104370, gap: 20000, proxy: 124370,
     tax: 'No additional GST assumed (homeowner)',
     verdict: 'Three-zone aircon; tiles and electrical extra',
-    summary: 'Includes three aircon zones, an estimated scaffold allowance and $49,420 carpentry. Every tile is excluded and electrical has no priced total. L3 bathroom and main ensuite are the same room (homeowner-confirmed).',
+    summary: 'Includes three aircon zones, an estimated scaffold allowance and $49,420 carpentry. Every tile is excluded and electrical has no priced total. The quote’s “L3 Bathroom” and “Main Ensuite” labels both refer to the home’s only bathroom.',
     strengths: ['Main, lounge + study aircon $8,160', 'Scaffold/MEWP $6,300 estimated within quote', 'Study shelves $5,180 + extensive cabinetry'],
-    risks: ['All tile materials extra at selected price × measured bathroom sqft', 'Electrical and PE unpriced', 'Hidden-storage cabinet and two bi-fold doors TBC'],
+    risks: ['All Main Ensuite tile materials extra at selected price × measured sqft', 'Electrical and PE unpriced', 'Hidden-storage cabinet and two bi-fold doors TBC'],
     details: {
-      'Bathroom': 'L3 bathroom = main ensuite (homeowner-confirmed); hacking/tiling and vanity work priced; tile supply extra.',
+      'Main Ensuite': 'Wet-work lines say “L3 Bathroom”; fittings/carpentry say “Main Ensuite”. Both labels refer to this one room; tile supply extra.',
       'Electrical': 'Rates only; $0 in total. Concealed work: +$700–$1,600 or +40% (clauses conflict).',
       'Aircon': '$8,160 Mitsubishi: main room, lounge and study; stand included',
       'Flooring': 'Resand/patch lounge parquet; 500 sqft bedroom vinyl $4,180; self-levelling optional $1,450',
@@ -69,8 +69,8 @@ const quoteData = [
       ['M&E (incl. $8,160 aircon)', 10820], ['Carpentry', 49420],
     ],
     notes: [
-      'Homeowner confirms “L3 Bathroom” and “Main Ensuite” refer to one room; request that wording on the revised quote.',
-      'All tile purchase is excluded: use your chosen per-sqft tile price × measured bathroom floor/wall tile area (default $6/psf). 300 × 600 mm laying is assumed. PE is $0/unpriced, despite an “Estimate” line.',
+      'Use “Main Ensuite” throughout revised documentation; Kang Sheng’s source labels are “L3 Bathroom” for wet work and “Main Ensuite” for fittings/carpentry.',
+      'All tile purchase is excluded: use your chosen per-sqft tile price × measured Main Ensuite floor/wall tile area (default $6/psf). 300 × 600 mm laying is assumed. PE is $0/unpriced, despite an “Estimate” line.',
       'TBC cabinet $2,850 + two bi-fold doors ~$530 each = $3,910 extra if chosen; optional levelling adds $1,450.',
       'Vinyl says 500 sqft × $8 = $4,000 but line total is $4,180: ask about the $180 difference.',
       'Signing is treated as contract acceptance; cancellation clause says 30%. Owner pays utilities during works. Valid 14 days.',
@@ -82,11 +82,11 @@ const quoteData = [
     color: '#4f9c93', bg: '#eaf7f4', base: 121128, printed: 121128, gap: 21750, proxy: 142878,
     tax: 'No additional GST assumed (homeowner)',
     verdict: 'Balcony, study floor and two-zone aircon',
-    summary: 'Includes ensuite wet works, balcony, study flooring/shelves, two-room aircon and two months of scaffold. Electrical and PE remain unpriced or excluded.',
+    summary: 'Includes Main Ensuite wet works, balcony, study flooring/shelves, two-room aircon and two months of scaffold. Electrical and PE remain unpriced or excluded.',
     strengths: ['Balcony hack and tiling', 'Aircon $8,140 incl. removal', '12-month defects liability period'],
     risks: ['All electrical lines $0', 'PE endorsement excluded', 'Dated 11 Aug; request current pricing'],
     details: {
-      'Bathroom': 'Ensuite hacking, tiling, waterproofing and plumbing quoted',
+      'Main Ensuite': 'Hacking, tiling, waterproofing and plumbing quoted',
       'Electrical': 'Per-point rates only; $0 in total; light fixtures TBC',
       'Aircon': '$7,760 master + study, plus $380 cassette removal; bracket/pump/isolator optional',
       'Flooring': 'Polish timber; vinyl in master and study; self-levelling included',
@@ -94,18 +94,18 @@ const quoteData = [
       'Payments': '20 / 30 / 25 / 20 / 5',
       'Warranty': '12-month defects liability period',
     },
-    notes: ['Tile retail cap is $5.80/psf; a selection above this may add the difference per bathroom/balcony tile sqft if tile supply is included at that cap. Confirm the mechanism.', 'Certified scaffold $6,000 for two months; $1,300 haulage is not Essenwoods’ lorry-crane service.', 'An optional 10% coordination fee applies to third-party items, not the whole quote.', 'No expiry stated, but the 11 Aug price should be refreshed.', 'Quote: polibuild.pdf, pp. 1–5.'],
+    notes: ['Tile retail cap is $5.80/psf; a selection above this may add the difference per Main Ensuite/balcony tile sqft if tile supply is included at that cap. Confirm the mechanism.', 'Certified scaffold $6,000 for two months; $1,300 haulage is not Essenwoods’ lorry-crane service.', 'An optional 10% coordination fee applies to third-party items, not the whole quote.', 'No expiry stated, but the 11 Aug price should be refreshed.', 'Quote: polibuild.pdf, pp. 1–5.'],
   },
   {
     id: 'essenwoods', name: 'Essenwoods', short: 'EW', ref: 'Quotation 8888', date: '19 Sep 2026',
     color: '#c69a46', bg: '#fff7e6', base: 162750, printed: 162750, gap: 21640, proxy: 184390,
     tax: 'No additional GST assumed (homeowner)',
-    verdict: 'Detailed ensuite and glazed study design',
-    summary: 'Prices a fuller ensuite, balcony, glazed study enclosure and PE endorsement. Aircon, scaffold and electrical totals remain outside the printed price.',
-    strengths: ['Glazed study enclosure $7,000', 'PE endorsement $3,000', 'Detailed ensuite and balcony work'],
+    verdict: 'Detailed Main Ensuite and glazed study design',
+    summary: 'Prices detailed Main Ensuite works, balcony, glazed study enclosure and PE endorsement. Aircon, scaffold and electrical totals remain outside the printed price.',
+    strengths: ['Glazed study enclosure $7,000', 'PE endorsement $3,000', 'Detailed Main Ensuite and balcony work'],
     risks: ['Aircon and scaffold not priced', 'Electrical rates only; no study shelves', '$8,000 bedroom storage estimated'],
     details: {
-      'Bathroom': 'Main ensuite hacking, 600 × 600 mm tile laying, waterproofing and cabinetry',
+      'Main Ensuite': 'Hacking, 600 × 600 mm tile laying, waterproofing and cabinetry',
       'Electrical': 'Per-point rates only; no priced total; lighting fixtures excluded',
       'Aircon': 'Not quoted; direct contractor appointment envisaged',
       'Flooring': 'Revarnish lounge parquet; bedroom vinyl; no explicit study floor',
@@ -124,8 +124,8 @@ const comparisonRows = [
   { group: 'Price & tax', label: 'Illustrative payable proxy', key: 'payable', money: true },
   { group: 'Price & tax', label: 'Tile price assumption', values: { cx: 'Allowance up to $6/psf; higher selections may cost extra', kangseng: 'All tile materials extra at selected $/psf', polibuild: 'Potential upgrade above $5.80/psf cap', essenwoods: 'Tile-supply allowance unclear' }, diff: true },
   { group: 'Price & tax', label: 'GST on printed quote', key: 'tax', diff: true },
-  { group: 'Bathroom', label: 'Wet works / room', values: { cx: 'Common bathroom; ensuite extent to confirm', kangseng: 'L3 bathroom = main ensuite (owner confirmed)', polibuild: 'Ensuite wet works', essenwoods: 'Main ensuite wet works' }, statuses: { cx: 'unknown', kangseng: 'included', polibuild: 'included', essenwoods: 'included' }, diff: true },
-  { group: 'Bathroom', label: 'Tile supply', values: { cx: 'Tiles up to $6/psf indicated', kangseng: 'All tile purchases excluded; VO', polibuild: 'Up to $5.80/psf indicated; confirm', essenwoods: '600 × 600 mm; confirm allowance' }, statuses: { cx: 'partial', kangseng: 'excluded', polibuild: 'partial', essenwoods: 'unknown' }, diff: true },
+  { group: 'Main Ensuite · only bathroom', label: 'Wet-work scope', values: { cx: 'Lines labelled “Bathroom” + “Main Ensuite”; confirm full scope', kangseng: 'Lines labelled “L3 Bathroom” + “Main Ensuite”; one room', polibuild: 'Main Ensuite wet works quoted', essenwoods: 'Main Ensuite wet works quoted' }, statuses: { cx: 'partial', kangseng: 'included', polibuild: 'included', essenwoods: 'included' }, diff: true },
+  { group: 'Main Ensuite · only bathroom', label: 'Tile supply', values: { cx: 'Up to $6/psf indicated', kangseng: 'All tile purchases excluded; VO', polibuild: 'Up to $5.80/psf indicated; confirm', essenwoods: '600 × 600 mm; confirm allowance' }, statuses: { cx: 'partial', kangseng: 'excluded', polibuild: 'partial', essenwoods: 'unknown' }, diff: true },
   { group: 'Scope', label: 'Study enclosure', values: { cx: 'No separate glass enclosure', kangseng: 'Full gypsum wall + glass door; no glass panel', polibuild: 'No glass enclosure', essenwoods: 'Half-wall + clear glass + frosted door $7,000' }, statuses: { cx: 'excluded', kangseng: 'partial', polibuild: 'excluded', essenwoods: 'included' }, diff: true },
   { group: 'Scope', label: 'Study shelves / floor', values: { cx: 'No shelves; whole-unit vinyl proposed', kangseng: '$5,180 shelves; floor not explicit', polibuild: '$4,410 shelves + floor included', essenwoods: 'No shelves or explicit study floor' }, statuses: { cx: 'partial', kangseng: 'partial', polibuild: 'included', essenwoods: 'excluded' }, diff: true },
   { group: 'Scope', label: 'Hidden-storage access', values: { cx: 'Not quoted', kangseng: 'Two curved doors; opening unconfirmed', polibuild: 'Storage cabinets; opening unquoted', essenwoods: 'New opening + door/frame $4,250' }, statuses: { cx: 'excluded', kangseng: 'unknown', polibuild: 'partial', essenwoods: 'included' }, diff: true },
@@ -143,15 +143,15 @@ const comparisonRows = [
 ];
 
 const priorityOptions = [
-  { id: 'price', label: 'Lowest printed price', quoteId: 'cx', title: 'Start with CX’s $93,227.70 incl. GST', summary: 'It is the lowest printed obligation, but several major works are missing. Confirm whether its common-bathroom wet works cover the intended ensuite.', caveat: 'No balcony, aircon, scaffold, study enclosure or PE in the quoted total.' },
-  { id: 'aircon', label: 'Three-zone aircon', quoteId: 'kangseng', title: 'Examine Kang Sheng’s bundled aircon', summary: 'The $104,370 quote includes three zones, $49,420 carpentry and estimated scaffolding. The homeowner confirms its L3 bathroom is the main ensuite.', caveat: 'Add tile materials at your chosen $/psf; electrical and PE remain unpriced.' },
-  { id: 'scope', label: 'Balcony + study floor', quoteId: 'polibuild', title: 'Examine Polibuild’s priced mid-scope', summary: 'Balcony, study shelves/floor, two-room aircon and two months of scaffold are in its $121,128 quote.', caveat: 'Refresh the August price and get fixed electrical and PE costs.' },
-  { id: 'design', label: 'Ensuite + study glass', quoteId: 'essenwoods', title: 'Examine Essenwoods’ detailed design', summary: 'Its $162,750 proposal covers an elaborate ensuite, glazed study and balcony, with PE endorsement.', caveat: 'Aircon, scaffold, study shelving and electrical totals are still missing.' },
+  { id: 'price', label: 'Lowest printed price', quoteId: 'cx', title: 'Start with CX’s $93,227.70 incl. GST', summary: 'It is the lowest printed obligation, but several major works are missing. CX labels some Main Ensuite items “Bathroom” and others “Main Ensuite”; reconcile the included work.', caveat: 'No balcony, aircon, scaffold, study enclosure or PE in the quoted total.' },
+  { id: 'aircon', label: 'Three-zone aircon', quoteId: 'kangseng', title: 'Examine Kang Sheng’s bundled aircon', summary: 'The $104,370 quote includes three zones, $49,420 carpentry and estimated scaffolding. Its “L3 Bathroom” and “Main Ensuite” lines refer to the one bathroom.', caveat: 'Add tile materials at your chosen $/psf; electrical and PE remain unpriced.' },
+  { id: 'scope', label: 'Balcony + study floor', quoteId: 'polibuild', title: 'Examine Polibuild’s priced mid-scope', summary: 'Main Ensuite works, balcony, study shelves/floor, two-room aircon and two months of scaffold are in its $121,128 quote.', caveat: 'Refresh the August price and get fixed electrical and PE costs.' },
+  { id: 'design', label: 'Main Ensuite + study glass', quoteId: 'essenwoods', title: 'Examine Essenwoods’ detailed design', summary: 'Its $162,750 proposal covers detailed Main Ensuite works, a glazed study and balcony, with PE endorsement.', caveat: 'Aircon, scaffold, study shelving and electrical totals are still missing.' },
 ];
 
 const askQuestions = [
-  'Mark each bathroom on a plan; confirm CX’s common-bathroom scope and record Kang Sheng’s L3 = ensuite clarification',
-  'Measure bathroom wall + floor and balcony floor tile sqft; price Kang Sheng’s tiles and any uplift above CX/Polibuild caps',
+  'Use Main Ensuite as the only bathroom name; reconcile CX’s differently labelled lines and Kang Sheng’s “L3 Bathroom” lines',
+  'Measure Main Ensuite walls + floor and balcony floor tile sqft; price Kang Sheng’s tiles and any uplift above CX/Polibuild caps',
   'Request a point-by-point fixed electrical total, fixtures, concealment, AC isolators and testing',
   'Price the same study enclosure, shelving and floor layout across all four proposals',
   'Separate hidden-storage opening/door costs from cabinet and bi-fold-door costs',
@@ -184,35 +184,35 @@ function App() {
   const [checkedQuestions, setCheckedQuestions] = useState([]);
   const [priority, setPriority] = useState('aircon');
   const [tilePrice, setTilePrice] = useState(String(DEFAULT_TILE_PRICE_PSF));
-  const [bathTileArea, setBathTileArea] = useState('');
+  const [mainEnsuiteTileArea, setMainEnsuiteTileArea] = useState('');
   const [balconyTileArea, setBalconyTileArea] = useState('');
 
   // No square footage is stated in the PDFs. Empty fields leave the proxy at its minimum.
   const chosenTilePrice = tilePrice === '' ? DEFAULT_TILE_PRICE_PSF : Number(tilePrice);
-  const bathroomSqft = bathTileArea === '' ? 0 : Number(bathTileArea);
+  const mainEnsuiteTileSqft = mainEnsuiteTileArea === '' ? 0 : Number(mainEnsuiteTileArea);
   const balconySqft = balconyTileArea === '' ? 0 : Number(balconyTileArea);
   const cxUpgradeRate = Math.max(0, chosenTilePrice - CX_TILE_CAP_PSF);
   const polibuildUpgradeRate = Math.max(0, chosenTilePrice - POLIBUILD_TILE_CAP_PSF);
   const modeledQuotes = quoteData.map((quote) => {
-    const tileAddition = quote.id === 'cx' ? cxUpgradeRate * bathroomSqft
-      : quote.id === 'kangseng' ? chosenTilePrice * bathroomSqft
-        : quote.id === 'polibuild' ? polibuildUpgradeRate * (bathroomSqft + balconySqft) : 0;
+    const tileAddition = quote.id === 'cx' ? cxUpgradeRate * mainEnsuiteTileSqft
+      : quote.id === 'kangseng' ? chosenTilePrice * mainEnsuiteTileSqft
+        : quote.id === 'polibuild' ? polibuildUpgradeRate * (mainEnsuiteTileSqft + balconySqft) : 0;
     const rate = quote.id === 'cx' ? cxUpgradeRate : quote.id === 'kangseng' ? chosenTilePrice : quote.id === 'polibuild' ? polibuildUpgradeRate : 0;
-    const missingArea = quote.id === 'polibuild' ? bathTileArea === '' && balconyTileArea === '' ? '(B+A)' : bathTileArea === '' ? 'B' : balconyTileArea === '' ? 'A' : '' : bathTileArea === '' ? 'B' : '';
+    const missingArea = quote.id === 'polibuild' ? mainEnsuiteTileArea === '' && balconyTileArea === '' ? '(B+A)' : mainEnsuiteTileArea === '' ? 'B' : balconyTileArea === '' ? 'A' : '' : mainEnsuiteTileArea === '' ? 'B' : '';
     const proxySuffix = rate > 0 && missingArea ? ` + ${money(rate)}×${missingArea}` : '';
     const proxy = quote.proxy + tileAddition;
     const payableSuffix = quote.id === 'cx' && proxySuffix ? ` + 1.09×(${proxySuffix.trim().slice(2)})` : proxySuffix;
     return { ...quote, gap: quote.gap + tileAddition, proxy, payable: quote.id === 'cx' ? Math.round(proxy * 1.09 * 100) / 100 : proxy, proxySuffix, payableSuffix };
   });
-  const cxTileTopup = cxUpgradeRate * bathroomSqft;
-  const kangTileCost = chosenTilePrice * bathroomSqft;
-  const polibuildTileTopup = polibuildUpgradeRate * (bathroomSqft + balconySqft);
+  const cxTileTopup = cxUpgradeRate * mainEnsuiteTileSqft;
+  const kangTileCost = chosenTilePrice * mainEnsuiteTileSqft;
+  const polibuildTileTopup = polibuildUpgradeRate * (mainEnsuiteTileSqft + balconySqft);
 
   const visibleQuotes = useMemo(() => modeledQuotes.filter((quote) => {
     const query = search.toLowerCase();
     const comparisonText = comparisonRows.map((row) => `${row.label} ${valueFor(row, quote)}`).join(' ');
     return (activeTab === 'All' || quote.short === activeTab) && (!query || [quote.name, quote.ref, quote.verdict, quote.summary, ...quote.strengths, ...quote.risks, comparisonText].join(' ').toLowerCase().includes(query));
-  }), [activeTab, search, tilePrice, bathTileArea, balconyTileArea]);
+  }), [activeTab, search, tilePrice, mainEnsuiteTileArea, balconyTileArea]);
 
   const comparedQuotes = modeledQuotes.filter((quote) => selected.includes(quote.id));
   const activePriority = priorityOptions.find((option) => option.id === priority);
@@ -251,7 +251,7 @@ function App() {
             <div className="insight-choice"><span className="choice-number">04</span><div><strong>$104,370</strong><span>Printed total · no extra GST assumed</span></div><ArrowUpRight size={18} /></div>
             <div className="insight-divider" />
             <div className="insight-metric"><span>Aircon included</span><strong>3 zones</strong></div>
-            <ul className="insight-list"><li>Scaffold $6,300 estimate is within the price</li><li>Tile material extra at your selected $/sqft</li><li>L3 bathroom = main ensuite (owner confirmed)</li></ul>
+            <ul className="insight-list"><li>Scaffold $6,300 estimate is within the price</li><li>Tile material extra at your selected $/sqft</li><li>One bathroom: Main Ensuite (quote labels include “L3 Bathroom”)</li></ul>
           </div>
         </section>
 
@@ -288,8 +288,8 @@ function App() {
           <div className="normalized-panel">
             <div className="panel-label"><span className="section-kicker">LIMITED-BASKET MODEL</span><Info size={15} aria-hidden="true" /></div>
             <div className="normalized-intro"><div><h3>Priced gaps, not full parity.</h3><p>Modelled payable amounts: CX at 9% GST; no additional GST assumed for the other three. Change tile price and measured areas below.</p></div><div className="normalized-note"><TriangleAlert size={15} /><span>Not binding contractor offers</span></div></div>
-            <div className="tile-calculator"><div><strong>Tile material estimate</strong><p>The PDFs give no measured tile area. Leave an area blank to show its outstanding formula. Default material price is $6/sqft.</p></div><label>Tile price ($/sqft)<input type="number" min="0" step="any" inputMode="decimal" value={tilePrice} onChange={(event) => { if (event.target.value === '' || (Number.isFinite(Number(event.target.value)) && Number(event.target.value) >= 0)) setTilePrice(event.target.value); }} placeholder="Default 6" /></label><label>Ensuite floor + walls (sqft)<input type="number" min="0" step="any" inputMode="decimal" value={bathTileArea} onChange={(event) => { if (event.target.value === '' || (Number.isFinite(Number(event.target.value)) && Number(event.target.value) >= 0)) setBathTileArea(event.target.value); }} placeholder="Enter area" /></label><label>Balcony floor (sqft)<input type="number" min="0" step="any" inputMode="decimal" value={balconyTileArea} onChange={(event) => { if (event.target.value === '' || (Number.isFinite(Number(event.target.value)) && Number(event.target.value) >= 0)) setBalconyTileArea(event.target.value); }} placeholder="Enter area" /></label></div>
-            <div className="tile-results"><span>Kang Sheng excluded tiles: <strong>{bathTileArea === '' ? `${money(chosenTilePrice)} × bathroom sqft` : `+${money(kangTileCost)}`}</strong></span><span>CX above $6 cap: <strong>{cxUpgradeRate === 0 ? 'No modelled uplift' : bathTileArea === '' ? `${money(cxUpgradeRate)} × bathroom sqft` : `+${money(cxTileTopup)}`}</strong></span><span>Polibuild above $5.80 cap (subject to confirmation): <strong>{polibuildUpgradeRate === 0 ? 'No modelled uplift' : `+${money(polibuildTileTopup)}${modeledQuotes[2].proxySuffix}`}</strong></span><span>Essenwoods’ tile-supply allowance remains unclear.</span></div>
+            <div className="tile-calculator"><div><strong>Main Ensuite tile-material estimate</strong><p>The Main Ensuite is the only bathroom. The PDFs give no measured tile area. Leave an area blank to show its outstanding formula. Default material price is $6/sqft.</p></div><label>Tile price ($/sqft)<input type="number" min="0" step="any" inputMode="decimal" value={tilePrice} onChange={(event) => { if (event.target.value === '' || (Number.isFinite(Number(event.target.value)) && Number(event.target.value) >= 0)) setTilePrice(event.target.value); }} placeholder="Default 6" /></label><label>Main Ensuite floor + walls (sqft)<input type="number" min="0" step="any" inputMode="decimal" value={mainEnsuiteTileArea} onChange={(event) => { if (event.target.value === '' || (Number.isFinite(Number(event.target.value)) && Number(event.target.value) >= 0)) setMainEnsuiteTileArea(event.target.value); }} placeholder="Enter area" /></label><label>Balcony floor (sqft)<input type="number" min="0" step="any" inputMode="decimal" value={balconyTileArea} onChange={(event) => { if (event.target.value === '' || (Number.isFinite(Number(event.target.value)) && Number(event.target.value) >= 0)) setBalconyTileArea(event.target.value); }} placeholder="Enter area" /></label></div>
+            <div className="tile-results"><span>Kang Sheng excluded tiles: <strong>{mainEnsuiteTileArea === '' ? `${money(chosenTilePrice)} × Main Ensuite sqft` : `+${money(kangTileCost)}`}</strong></span><span>CX above $6 cap: <strong>{cxUpgradeRate === 0 ? 'No modelled uplift' : mainEnsuiteTileArea === '' ? `${money(cxUpgradeRate)} × Main Ensuite sqft` : `+${money(cxTileTopup)}`}</strong></span><span>Polibuild above $5.80 cap (subject to confirmation): <strong>{polibuildUpgradeRate === 0 ? 'No modelled uplift' : `+${money(polibuildTileTopup)}${modeledQuotes[2].proxySuffix}`}</strong></span><span>Essenwoods’ tile-supply allowance remains unclear.</span></div>
             <div className="normalized-chart">{modeledQuotes.map((quote) => <div className="chart-row" key={quote.id}><div className="chart-name"><span className="chart-dot" style={{ background: quote.color }} />{quote.name}</div><div className="chart-track"><div className="chart-fill" style={{ width: `${Math.min(100, (quote.payable / Math.max(...modeledQuotes.map((item) => item.payable))) * 100)}%`, background: quote.color }}><span>{money(quote.payable)}{quote.proxySuffix ? '+' : ''}</span></div></div><span className="chart-delta">+{money(quote.gap)} gaps</span></div>)}</div>
             <div className="model-note"><strong>What this model assumes:</strong> CX starts from its $85,530 pre-GST base and applies 9% GST to the whole illustrative basket (its printed $93,227.70 already includes GST). Kang Sheng, Polibuild and Essenwoods start from their printed sums and <strong>no additional GST is assumed payable</strong>, per the homeowner; this is not proof of registration status. Gap allowances are $7,500 electrical, $8,140 two-room aircon/removal, $3,000 PE, $6,000 scaffold, $7,000 glazed study, $4,250 new hidden-storage access/door and $7,000 balcony where not already covered. Kang Sheng gets just a <strong>$2,500 minimum study-glass allowance</strong> and <strong>$0 for unresolved hidden-access work</strong>; it already includes three-zone aircon and $6,300 estimated scaffold. Entered tile costs use your chosen $/sqft: Kang Sheng pays the full amount; CX and Polibuild may pay only the amount above their respective $6 and $5.80 caps. Below a cap, no refund is assumed. Tile wastage/delivery, Kang Sheng’s TBC cabinets/doors, study redesign and concealment remain excluded.</div>
           </div>
@@ -315,19 +315,19 @@ function App() {
           </article>)}</div>
         </section>
 
-        <section className="decision-section section-wrap" id="decision"><div className="decision-card"><div className="decision-copy"><div className="section-kicker">03 / DECISION NOTES</div><h2>The honest<br /><em>takeaway.</em></h2><p><strong>There is no defensible like-for-like winner yet.</strong> Kang Sheng’s L3 bathroom and main ensuite are the same room (homeowner-confirmed). Allow the selected tile price per measured sqft for its excluded tiles; electrical, CX’s bathroom scope, hidden access, study layout and tax-inclusive totals still need reconciliation.</p><div className="recommendation"><span className="rec-icon"><Sparkles size={17} /></span><div><span>NEXT STEP</span><strong>Request revised, room-by-room fixed quotes.</strong><small>Use the checklist to close the largest cost and scope gaps.</small></div></div></div><div className="questions"><div className="questions-head"><span>FOLLOW-UP CHECKLIST</span><b>{checkedQuestions.length}/{askQuestions.length} complete</b></div>{askQuestions.map((question, index) => <button className={`question ${checkedQuestions.includes(index) ? 'done' : ''}`} type="button" key={question} onClick={() => toggleQuestion(index)} aria-pressed={checkedQuestions.includes(index)}><span className="question-check">{checkedQuestions.includes(index) && <Check size={13} />}</span><span>{question}</span><ArrowUpRight size={15} /></button>)}</div></div></section>
+        <section className="decision-section section-wrap" id="decision"><div className="decision-card"><div className="decision-copy"><div className="section-kicker">03 / DECISION NOTES</div><h2>The honest<br /><em>takeaway.</em></h2><p><strong>There is one bathroom: the Main Ensuite.</strong> The quote PDFs use different labels (“L3 Bathroom,” “Bathroom,” “Ensuite bathroom” and “Main Ensuite”), now standardized here to Main Ensuite. The remaining comparison is about each contractor’s included work, tile supply, hidden access, study layout and payable total.</p><div className="recommendation"><span className="rec-icon"><Sparkles size={17} /></span><div><span>NEXT STEP</span><strong>Request revised, room-by-room fixed quotes.</strong><small>Use the checklist to close the largest cost and scope gaps.</small></div></div></div><div className="questions"><div className="questions-head"><span>FOLLOW-UP CHECKLIST</span><b>{checkedQuestions.length}/{askQuestions.length} complete</b></div>{askQuestions.map((question, index) => <button className={`question ${checkedQuestions.includes(index) ? 'done' : ''}`} type="button" key={question} onClick={() => toggleQuestion(index)} aria-pressed={checkedQuestions.includes(index)}><span className="question-check">{checkedQuestions.includes(index) && <Check size={13} />}</span><span>{question}</span><ArrowUpRight size={15} /></button>)}</div></div></section>
       </main>
       <section className="print-report" aria-label="A4 quote comparison report">
         <header className="print-report-header"><div><span>RENOSCOPE / COMPARISON REPORT</span><h1>Four renovation quotes</h1><p>Updated 23 Sep 2026 · Singapore dollars · Based on contractor PDFs and homeowner clarification</p></div><strong>01 / 02</strong></header>
-        <p className="print-lead"><strong>Decision status:</strong> No defensible like-for-like winner yet. Kang Sheng’s “L3 Bathroom” and “Main Ensuite” are the same room (homeowner-confirmed). Its tiles and electrical are not in the printed total; CX’s common-bathroom scope remains to be reconciled. No additional GST is assumed for Kang Sheng, Polibuild or Essenwoods.</p>
+        <p className="print-lead"><strong>Room-name standard:</strong> The home has one bathroom, called the <strong>Main Ensuite</strong> throughout this report. Source quote labels vary: Kang Sheng “L3 Bathroom”/“Main Ensuite”, CX “Bathroom”/“Main Ensuite”, Polibuild “Ensuite bathroom” and Essenwoods “Main ensuite”. Scope differences below refer to this one room. Kang Sheng’s tile supply and electrical are not in its printed total. No additional GST is assumed for Kang Sheng, Polibuild or Essenwoods.</p>
         <h2>Price snapshot</h2>
         <table className="print-table print-prices"><thead><tr><th>Contractor</th><th>Printed quote</th><th>Modelled additions*</th><th>Payable proxy*</th><th>Tax assumption</th></tr></thead><tbody>{modeledQuotes.map((quote) => <tr key={quote.id}><th scope="row">{quote.name}</th><td>{money(quote.printed)}</td><td>+{money(quote.gap)}</td><td><strong>{money(quote.payable)}{quote.payableSuffix}</strong></td><td>{quote.id === 'cx' ? '9% applied' : 'No extra GST'}</td></tr>)}</tbody></table>
         <p className="print-caption">*Proxies are planning illustrations, not bids. CX applies 9% GST to its $85,530 pre-GST base plus modelled additions; no additional GST is assumed for the other three (homeowner assumption, not a registration finding). Blank tile areas remain formulas, not zero-cost tiles.</p>
         <h2>Tile material scenario</h2>
-        <div className="print-tile"><div><span>Selected tile price</span><b>{money(chosenTilePrice)} / sqft</b></div><div><span>Ensuite floor + walls (B)</span><b>{bathTileArea === '' ? 'Not measured' : `${bathTileArea} sqft`}</b></div><div><span>Balcony floor (A)</span><b>{balconyTileArea === '' ? 'Not measured' : `${balconyTileArea} sqft`}</b></div></div>
-        <p className="print-caption">Kang Sheng: full material price × B {bathTileArea === '' ? '(area missing)' : `= +${money(kangTileCost)}`}. CX: {cxUpgradeRate > 0 ? `+${money(cxUpgradeRate)} × B above its $6 cap, then 9% GST if purchased through CX` : 'within its $6 cap; no tile uplift assumed'}. Polibuild: +{money(polibuildUpgradeRate)} × (B+A) above its $5.80 cap, subject to tile-supply confirmation. No credit below a cap; Essenwoods’ material allowance is unclear. Delivery, wastage and tile-size changes are not modelled.</p>
+        <div className="print-tile"><div><span>Selected tile price</span><b>{money(chosenTilePrice)} / sqft</b></div><div><span>Main Ensuite floor + walls (B)</span><b>{mainEnsuiteTileArea === '' ? 'Not measured' : `${mainEnsuiteTileArea} sqft`}</b></div><div><span>Balcony floor (A)</span><b>{balconyTileArea === '' ? 'Not measured' : `${balconyTileArea} sqft`}</b></div></div>
+        <p className="print-caption">Kang Sheng: full material price × B {mainEnsuiteTileArea === '' ? '(area missing)' : `= +${money(kangTileCost)}`}. CX: {cxUpgradeRate > 0 ? `+${money(cxUpgradeRate)} × B above its $6 cap, then 9% GST if purchased through CX` : 'within its $6 cap; no tile uplift assumed'}. Polibuild: +{money(polibuildUpgradeRate)} × (B+A) above its $5.80 cap, subject to tile-supply confirmation. No credit below a cap; Essenwoods’ material allowance is unclear. Delivery, wastage and tile-size changes are not modelled.</p>
         <h2>Scope snapshot</h2>
-        <table className="print-table print-scope"><thead><tr><th>Work</th>{quoteData.map((quote) => <th key={quote.id}>{quote.name}</th>)}</tr></thead><tbody>{comparisonRows.filter((row) => ['Wet works / room', 'Tile supply', 'Study enclosure', 'Study shelves / floor', 'Hidden-storage access', 'Aircon', 'Scaffold / lifting', 'Balcony hack + floor', 'PE endorsement'].includes(row.label)).map((row) => <tr key={row.label}><th scope="row">{row.label}</th>{quoteData.map((quote) => <td key={quote.id}>{valueFor(row, quote)}</td>)}</tr>)}</tbody></table>
+        <table className="print-table print-scope"><thead><tr><th>Work</th>{quoteData.map((quote) => <th key={quote.id}>{quote.name}</th>)}</tr></thead><tbody>{comparisonRows.filter((row) => ['Wet-work scope', 'Tile supply', 'Study enclosure', 'Study shelves / floor', 'Hidden-storage access', 'Aircon', 'Scaffold / lifting', 'Balcony hack + floor', 'PE endorsement'].includes(row.label)).map((row) => <tr key={row.label}><th scope="row">{row.label}</th>{quoteData.map((quote) => <td key={quote.id}>{valueFor(row, quote)}</td>)}</tr>)}</tbody></table>
         <div className="print-followup"><div className="print-part-label">02 / 02</div><h2>What the limited model still misses</h2><ul><li>Kang Sheng’s $2,500 study glass is only a minimum: wall redesign and access need pricing; its hidden cabinet $2,850 and two ~$530 bi-folds are TBC. Its $6,300 scaffold is estimated within the quote.</li><li>Polibuild’s $4,410 study shelves and flooring are priced, but study glazing and PE are not. Essenwoods has the glass study but no shelves, aircon or priced scaffold. Hidden-storage access is not a cabinet.</li><li>Electrical $7,500 is a planning allowance, not a take-off. Fixtures, sanitary ware, approvals and exact flooring can change costs; request written revisions.</li></ul>
           <p>Electrical: CX prices $4,200; the other three give rates without a priced total. General warranty: CX 1 year, Polibuild 12-month defects liability; Kang Sheng and Essenwoods do not state a general-work period (Kang Sheng lists a separate aircon warranty).</p>
           <h2>Follow-up checklist</h2><ol>{askQuestions.map((question) => <li key={question}>{question}</li>)}</ol>
